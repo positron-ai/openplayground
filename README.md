@@ -1,12 +1,12 @@
 # Positron notes
 One thing to note is to remember to run this specifying the --models
 
-##in one terminal:
+## in one terminal:
 ```sh
 cd app && npm install && npx parcel watch src/index.html --no-cache
 ```
 
-##in the second terminal
+## in the second terminal
 
 ```sh
 pushd server && pip3 install -r requirements.txt && popd
