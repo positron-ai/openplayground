@@ -35,6 +35,7 @@ class Storage:
             load_dotenv(env_file_path)
 
         for provider_name, provider in self.models_json.items():
+            logger.info(provider_name)
             models = [
                 Model(
                     name=model_name,
@@ -46,6 +47,7 @@ class Storage:
                 )
                 for model_name, model in provider['models'].items()
             ]
+            logger.info(models)
             self.providers.append(
                 Provider(
                     name=provider_name,
@@ -72,18 +74,23 @@ class Storage:
 
     def __initialize_config__(self, models_json_path: str = None):
         if models_json_path is None:
+            print(f"DBUG> APP_DIR {APP_DIR}")
             models_json_path = os.path.join(APP_DIR, 'models.json')
 
         original_models_json = None
         if not pkg_resources.is_resource('server', 'models.json'):
+            print(f"DEBUG found models.json as pkg_resources")
             original_models_json = open('./models.json').read()
         else:
+            print(f"DEBUG Path 2")
             original_models_json = pkg_resources.read_text('server', 'models.json')
 
         if not os.path.exists(os.path.join(APP_DIR, 'models.json')):
+            print(f"DEBUG Path 3")
             with open(os.path.join(APP_DIR, 'models.json'), 'w') as f:
                 f.write(original_models_json)
         else:
+            print(f"DEBUG Path 4")
             original_models_json = json.loads(original_models_json)
 
             with open(os.path.join(APP_DIR, 'models.json'), 'r') as f:

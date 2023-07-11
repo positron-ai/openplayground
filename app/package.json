@@ -54,7 +54,7 @@
     "react-select": "^5.7.0",
     "react-tiny-popover": "^7.2.3",
     "react-transition-group": "^4.4.5",
-    "sort-by": "^1.2.0",
+    "sort-by": "^0.0.2",
     "sse.js": "^0.6.1",
     "tailwind-merge": "^1.9.0",
     "tailwindcss-animate": "^1.0.5",

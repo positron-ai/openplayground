@@ -8,7 +8,7 @@ from .provider import provider_bp
 from flask import g, Blueprint, current_app, stream_with_context, Response
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+#logger.setLevel(logging.INFO)
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 api_bp.register_blueprint(provider_bp)

@@ -8,7 +8,7 @@ from ..entities import Model, ModelEncoder
 from flask import g, request, jsonify, Blueprint, current_app
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+#logger.setLevel(logging.INFO)
 
 provider_bp = Blueprint('provider', __name__, url_prefix='/provider')
 

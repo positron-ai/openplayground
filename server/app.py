@@ -33,7 +33,7 @@ def warning_on_one_line(message, category, filename, lineno, file=None, line=Non
 warnings.formatwarning = warning_on_one_line
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+#logger.setLevel(logging.INFO)
 
 app = Flask(__name__)
 
@@ -293,12 +293,19 @@ class GlobalStateManager:
 
         provider_details = ProviderDetails(
             api_key=provider.api_key ,
-            version_key=None
+            version_key=None ,
+            api_base="http://mcherba-dev:8000"
+            #api_base="152.70.115.63:8000"
         )
         logger.info(f"Received inference request {inference_request.model_provider}")
+#        logger.info(f"\n\nMRC_DEBUG> provider {provider}")
+#        logger.info(f"\nMRC_DEBUG> provider_details {provider_details}\n")
+#        logger.info(f"\nMRC_DEBUG> INFERENCE_REQUEST {inference_request}")
 
         if inference_request.model_provider == "openai":
             return self.inference_manager.openai_text_generation(provider_details, inference_request)
+        elif inference_request.model_provider == "positron":
+            return self.inference_manager.positron_text_generation(provider_details, inference_request)
         elif inference_request.model_provider == "cohere":
             return self.inference_manager.cohere_text_generation(provider_details, inference_request)
         elif inference_request.model_provider == "huggingface":
